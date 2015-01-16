@@ -2,34 +2,61 @@
 namespace BVW;
 
 use BVW\Interfaces\FormInterface;
-use BVW\Interfaces\FormElementInterface;
+use BVW\Interfaces\FieldContainerInterface;
+use BVW\Input;
+use BVW\Textarea;
+use BVW\Label;
+use BVW\Divider;
+use BVW\Button;
+use BVW\Validator;
 
-class Form implements FormInterface
+class Form implements FormInterface, FieldContainerInterface
 {
-    /**
-     *
-     * @var FormElementInterface[]
-     */
-    private $campos = array();
+    use Traits\FieldContainerTrait;
     
     private $action = "";
     private $method = "POST";
     private $class = "";
+    private $validator;
     
-    public function __construct($action = "", $class = "", $method = "POST")
+    public function __construct(Validator $validator, $action = "", $class = "", $method = "POST")
     {
+        $this->validator = $validator;
         $this->action = $action;
         $this->class = $class;
         $this->method = $method;
     }
     
-    public function adicionaCampo(FormElementInterface $campo)
+    /**
+     * Creates a Field
+     * 
+     * @param string $field
+     * @param string $type
+     * @param array $options
+     * @return FormFieldInterface
+     */
+    public function createField($field, $type = null, array $options = array())
     {
-        $this->campos[] = $campo;
+        switch (strtolower($field)) {
+            case "input":
+                $field = new Input($type, $options);
+                break;
+            case "textarea":
+                $field = new Textarea($options);
+                break;
+            case "label":
+                $field = new Label($options);
+                break;
+            case "button":
+                $field = new Button($type, $options);
+                break;
+            default:
+                $field = new Divider();
+        }
         
-        return $this;
+        return $field;
     }
-    
+      
     public function render()
     {
         echo $this;

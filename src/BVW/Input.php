@@ -5,7 +5,7 @@ use BVW\Interfaces\FormElementInterface;
 
 class Input implements FormElementInterface
 {
-    private $validTypes = array("text","email");
+    private $validTypes = array("text","email","number");
     private $type;
     private $id;
     private $name;

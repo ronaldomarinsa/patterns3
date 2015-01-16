@@ -9,10 +9,10 @@ class Button implements FormElementInterface
     private $class;
     private $value = "Button";
     
-    public function __construct($class = "", $value = "Button", $type="reset")
+    public function __construct($type="reset", array $options = array())
     {
-        $this->class = $class;
-        $this->value = $value;
+        $this->class = isset($options["class"]) ? $options["class"] : null;
+        $this->value = isset($options["value"]) ? $options["value"] : "Button";
         $this->type = $type;
     }
     

@@ -2,56 +2,84 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use BVW\Form;
-use BVW\Input;
-use BVW\Textarea;
-use BVW\Label;
-use BVW\Divider;
-use BVW\Button;
+use BVW\Request;
+use BVW\Validator;
 
-$nome = new Input("text",array(
+$form1 = new Form(new Validator(new Request()));
+
+$nome = $form1->createField("input","text",array(
     "id" => "inputNome",
     "name" => "nome",
     "class" => "form-control",
     "placeholder" => "Nome",
     "required" => true
 ));
-$labelNome = new Label(array(
+$labelNome = $form1->createField("label", null, array(
     "for" => $nome->getId(),
     "value" => "Nome"
 ));
-$email = new Input("email",array(
+
+$email = $form1->createField("input","email",array(
     "id" => "inputEmail",
     "name" => "email",
     "class" => "form-control",
     "placeholder" => "Email",
     "required" => true
 ));
-$labelEmail = new Label(array(
+$labelEmail = $form1->createField("label", null, array(
     "for" => $email->getId(),
     "value" => "Email"
 ));
-$mensagem = new Textarea(array(
+
+$mensagem = $form1->createField("textarea", null, array(
     "id" => "textareaMensagem",
     "name" => "mensagem",
     "class" => "form-control",
     "placeholder" => "Mensagem",
     "required" => true
 ));
-$labelMensagem = new Label(array(
+$labelMensagem = $form1->createField("label", null, array(
     "for" => $mensagem->getId(),
     "value" => "Mensagem"
 ));
 
-$submitButton = new Button("", "Enviar", "submit");
-$cancelButton = new Button("", "Cancelar");
+$submitButton = $form1->createField("button", "submit", array("value" => "Enviar"));
+$cancelButton = $form1->createField("button", "reset", array("value" => "Limpar"));
 
-$divider = new Divider();
+$divider = $form1->createField("divider");
 
-$form = new Form();
-
-$form->adicionaCampo($labelNome)->adicionaCampo($nome)->adicionaCampo($divider)
+$form1->adicionaCampo($labelNome)->adicionaCampo($nome)->adicionaCampo($divider)
      ->adicionaCampo($labelEmail)->adicionaCampo($email)->adicionaCampo($divider)
      ->adicionaCampo($labelMensagem)->adicionaCampo($mensagem)->adicionaCampo($divider)
      ->adicionaCampo($submitButton)->adicionaCampo($cancelButton);
 
-$form->render();
+$form1->render();
+
+echo "<hr />";
+
+$form2 = new Form(new Validator(new Request()));
+
+$produto = $form2->createField("input", "text", array(
+    "name" => "produto",
+    "placeholder" => "Nome do Produto",
+    "class" => "form-control"
+));
+$descricao = $form2->createField("textarea", null, array(
+    "id" => "textDescricao",
+    "name" => "descricao",
+    "class" => "form-control",
+    "placeholder" => "Descrição do Produto",
+    "required" => true
+));
+$labelDescricao = $form2->createField("label", null, array(
+    "for" => $descricao->getId(),
+    "value" => "Descrição"
+));
+
+$form2->adicionaCampo($produto)->adicionaCampo($divider)
+        ->adicionaCampo($labelDescricao)->adicionaCampo($divider)
+        ->adicionaCampo($descricao)->adicionaCampo($divider)
+        ->adicionaCampo($submitButton);
+$form2->render();
+echo "<hr />";
+
