@@ -1,0 +1,13 @@
+{
+    "description" : "Trilhando caminho com PHP - Design Patterns",
+    
+    "require" :{
+        "php" : ">=5.4"
+    },
+    
+    "autoload": {
+        "psr-4": {
+            "BVW\\" : "src/BVW/"
+        }
+    }    
+}
