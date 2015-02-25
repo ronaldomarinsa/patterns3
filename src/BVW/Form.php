@@ -3,11 +3,6 @@ namespace BVW;
 
 use BVW\Interfaces\FormInterface;
 use BVW\Interfaces\FieldContainerInterface;
-use BVW\Input;
-use BVW\Textarea;
-use BVW\Label;
-use BVW\Divider;
-use BVW\Button;
 use BVW\Validator;
 
 class Form implements FormInterface, FieldContainerInterface
@@ -37,32 +32,24 @@ class Form implements FormInterface, FieldContainerInterface
      */
     public function createField($field, $type = null, array $options = array())
     {
-        switch (strtolower($field)) {
-            case "input":
-                $field = new Input($type, $options);
-                break;
-            case "textarea":
-                $field = new Textarea($options);
-                break;
-            case "label":
-                $field = new Label($options);
-                break;
-            case "button":
-                $field = new Button($type, $options);
-                break;
-            default:
-                $field = new Divider();
+        $className = "BVW\\" . ucfirst(strtolower($field));
+        if (!class_exists($className)) {
+            throw new \InvalidArgumentException("Classe {$field} inexistente.");
+        }
+        $ref = new \ReflectionClass($className);
+        $params = $ref->getConstructor()->getParameters();
+        if (count($params) == 2) {
+            $field = new $className($type, $options);
+        } elseif (count($params) == 1) {
+            $field = new $className($options);
+        } else {
+            $field = new $className();
         }
         
         return $field;
     }
       
     public function render()
-    {
-        echo $this;
-    }
-    
-    public function __toString()
     {
         $form = "<form ";
         $form .= "action=\"{$this->action}\" ";
@@ -73,7 +60,6 @@ class Form implements FormInterface, FieldContainerInterface
         }
         $form .= "</form>\n";
         
-        return $form;
-        
+        echo $form;
     }
 }

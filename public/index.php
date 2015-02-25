@@ -48,10 +48,13 @@ $cancelButton = $form1->createField("button", "reset", array("value" => "Limpar"
 
 $divider = $form1->createField("divider");
 
-$form1->adicionaCampo($labelNome)->adicionaCampo($nome)->adicionaCampo($divider)
+$fieldset = $form1->createField("fieldset");
+$fieldset->adicionaCampo($labelNome)->adicionaCampo($nome)->adicionaCampo($divider)
      ->adicionaCampo($labelEmail)->adicionaCampo($email)->adicionaCampo($divider)
      ->adicionaCampo($labelMensagem)->adicionaCampo($mensagem)->adicionaCampo($divider)
      ->adicionaCampo($submitButton)->adicionaCampo($cancelButton);
+
+$form1->adicionaCampo($fieldset);
 
 $form1->render();
 

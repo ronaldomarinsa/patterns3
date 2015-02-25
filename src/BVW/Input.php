@@ -21,7 +21,10 @@ class Input implements FormElementInterface
         }
         $this->type = $type;
         foreach ($options as $attribute => $value) {
-            $this->$attribute = $value;
+            $method = "set" . ucfirst($attribute);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
         }
     }
     
@@ -42,5 +45,71 @@ class Input implements FormElementInterface
         $el .= " />";
         
         return $el;
+    }
+    
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function getPlaceholder()
+    {
+        return $this->placeholder;
+    }
+
+    public function getRequired()
+    {
+        return $this->required;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+ 
+    public function setClass($class)
+    {
+        $this->class = $class;
+        return $this;
+    }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+        return $this;
+    }
+
+    public function setPlaceholder($placeholder)
+    {
+        $this->placeholder = $placeholder;
+        return $this;
+    }
+
+    public function setRequired($required)
+    {
+        $this->required = $required;
+        return $this;
     }
 }
