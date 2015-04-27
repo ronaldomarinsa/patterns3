@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Trilhando caminho com PHP
 
 ## Design Patterns
@@ -36,3 +37,6 @@ Depois de clonado, instale usando o composer
 Execute o servidor embutido do php apontando para a pasta *public/*
 
 > php -S [servidor]:[porta] -t public/
+=======
+# patterns2
+>>>>>>> f1a6fe5660014545a6d22b932b445f963274f944
