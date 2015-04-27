@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use BVW\Form;
-use BVW\Request;
-use BVW\Validator;
+use RMA\Form;
+use RMA\Request;
+use RMA\Validator;
 
 $form1 = new Form(new Validator(new Request()));
 
@@ -14,6 +14,7 @@ $nome = $form1->createField("input","text",array(
     "placeholder" => "Nome",
     "required" => true
 ));
+
 $labelNome = $form1->createField("label", null, array(
     "for" => $nome->getId(),
     "value" => "Nome"
@@ -26,10 +27,12 @@ $email = $form1->createField("input","email",array(
     "placeholder" => "Email",
     "required" => true
 ));
+
 $labelEmail = $form1->createField("label", null, array(
     "for" => $email->getId(),
     "value" => "Email"
 ));
+
 
 $mensagem = $form1->createField("textarea", null, array(
     "id" => "textareaMensagem",
@@ -38,10 +41,12 @@ $mensagem = $form1->createField("textarea", null, array(
     "placeholder" => "Mensagem",
     "required" => true
 ));
+
 $labelMensagem = $form1->createField("label", null, array(
     "for" => $mensagem->getId(),
     "value" => "Mensagem"
 ));
+
 
 $submitButton = $form1->createField("button", "submit", array("value" => "Enviar"));
 $cancelButton = $form1->createField("button", "reset", array("value" => "Limpar"));
@@ -67,6 +72,7 @@ $produto = $form2->createField("input", "text", array(
     "placeholder" => "Nome do Produto",
     "class" => "form-control"
 ));
+
 $descricao = $form2->createField("textarea", null, array(
     "id" => "textDescricao",
     "name" => "descricao",
@@ -74,6 +80,7 @@ $descricao = $form2->createField("textarea", null, array(
     "placeholder" => "Descrição do Produto",
     "required" => true
 ));
+
 $labelDescricao = $form2->createField("label", null, array(
     "for" => $descricao->getId(),
     "value" => "Descrição"

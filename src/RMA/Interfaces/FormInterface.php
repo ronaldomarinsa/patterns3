@@ -1,5 +1,5 @@
 <?php
-namespace BVW\Interfaces;
+namespace RMA\Interfaces;
 
 interface FormInterface
 {

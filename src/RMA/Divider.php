@@ -1,7 +1,7 @@
 <?php
-namespace BVW;
+namespace RMA;
 
-use BVW\Interfaces\FormElementInterface;
+use RMA\Interfaces\FormElementInterface;
 
 class Divider implements FormElementInterface
 {
@@ -9,6 +9,7 @@ class Divider implements FormElementInterface
     {
         
     }
+    
     public function getId()
     {
         

@@ -1,9 +1,9 @@
 <?php
-namespace BVW;
+namespace RMA;
 
-use BVW\Interfaces\FormInterface;
-use BVW\Interfaces\FieldContainerInterface;
-use BVW\Validator;
+use RMA\Interfaces\FormInterface;
+use RMA\Interfaces\FieldContainerInterface;
+use RMA\Validator;
 
 class Form implements FormInterface, FieldContainerInterface
 {
@@ -32,12 +32,13 @@ class Form implements FormInterface, FieldContainerInterface
      */
     public function createField($field, $type = null, array $options = array())
     {
-        $className = "BVW\\" . ucfirst(strtolower($field));
+        $className = "RMA\\" . ucfirst(strtolower($field));
         if (!class_exists($className)) {
             throw new \InvalidArgumentException("Classe {$field} inexistente.");
         }
         $ref = new \ReflectionClass($className);
         $params = $ref->getConstructor()->getParameters();
+
         if (count($params) == 2) {
             $field = new $className($type, $options);
         } elseif (count($params) == 1) {
@@ -55,6 +56,7 @@ class Form implements FormInterface, FieldContainerInterface
         $form .= "action=\"{$this->action}\" ";
         $form .= "method=\"{$this->method}\" ";
         $form .= "class=\"{$this->class}\">\n";
+        
         foreach ($this->campos as $el) {
             $form .= $el->getElement() . "\n";
         }

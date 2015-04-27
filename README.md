@@ -2,18 +2,6 @@
 
 ## Design Patterns
 
-### Projeto Fase 1
-
-Formulário básico
-
-Nessa fase, você deverá criar uma classe(s) que seja responsável por gerar um formulário HTML de forma totalmente dinâmica.
-
-Uma vez que você criar o objeto de seu formulário, você poderá chamar métodos para adicionar um novo campo, especificando seu tipo, entre outros;
-
-Essa classe deverá possuir um método chamado render, esse método terá o objetivo de gerar o código HTML do formulário, baseado nos campos adicionados anteriormente.
-
-Não deixe de tentar utilizar os conceitos de patterns e design aprendidos até o momento, para que o projeto possa evoluir de forma mais estruturada.
-
 ### Projeto Fase 2
 
 Funcionalidades
@@ -36,16 +24,6 @@ Restrições & dicas
 - Procure fazer métodos pequenos. Métodos com +100 linhas não serão permitidos
 - Use muitas interfaces para confiar na comuniçação/contrato dos seus objetos.
 - Separe as classes em namespaces.
-
------------
-
-## Projeto Fase 3
-
-Fieldsets
-
-Agora que seu form possui elementos que são renderizados separadamente, vamos fazer o mesmo para um elemento em especial: o fieldset.
-
-Você deve ser capaz de criar um formulário onde chamando o método "createField()" da fase anterior, seja possível você criar fieldsets e popular esses fieldsets com campos, usando mesmo método. 
 
 -----------
 

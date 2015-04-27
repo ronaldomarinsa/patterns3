@@ -1,7 +1,7 @@
 <?php
-namespace BVW\Traits;
+namespace RMA\Traits;
 
-use BVW\Interfaces\FormElementInterface;
+use RMA\Interfaces\FormElementInterface;
 
 trait FieldContainerTrait
 {
@@ -13,8 +13,7 @@ trait FieldContainerTrait
     
     public function adicionaCampo(FormElementInterface $campo)
     {
-        $this->campos[] = $campo;
-        
+        $this->campos[] = $campo;        
         return $this;
     }
 }

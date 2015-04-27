@@ -1,7 +1,7 @@
 <?php
-namespace BVW;
+namespace RMA;
 
-use BVW\Interfaces\FormElementInterface;
+use RMA\Interfaces\FormElementInterface;
 
 class Input implements FormElementInterface
 {
@@ -20,8 +20,10 @@ class Input implements FormElementInterface
             $type = "text";
         }
         $this->type = $type;
+
         foreach ($options as $attribute => $value) {
             $method = "set" . ucfirst($attribute);
+            
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }

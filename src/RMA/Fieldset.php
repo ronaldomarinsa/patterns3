@@ -1,8 +1,8 @@
 <?php
-namespace BVW;
+namespace RMA;
 
-use BVW\Interfaces\FieldContainerInterface;
-use BVW\Interfaces\FormElementInterface;
+use RMA\Interfaces\FieldContainerInterface;
+use RMA\Interfaces\FormElementInterface;
 
 class Fieldset implements FormElementInterface, FieldContainerInterface
 {
@@ -21,6 +21,7 @@ class Fieldset implements FormElementInterface, FieldContainerInterface
         $el = "<fieldset";
         $el .= " id=\"{$this->id}\"";
         $el .= " class=\"{$this->class}\">\n";
+        
         foreach ($this->campos as $field) {
             $el .= $field->getElement();
         }

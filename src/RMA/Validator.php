@@ -1,7 +1,7 @@
 <?php
-namespace BVW;
+namespace RMA;
 
-use BVW\Request;
+use RMA\Request;
 
 class Validator
 {

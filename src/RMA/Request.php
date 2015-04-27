@@ -1,5 +1,5 @@
 <?php
-namespace BVW;
+namespace RMA;
 
 class Request
 {

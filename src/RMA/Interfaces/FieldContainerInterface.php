@@ -1,7 +1,7 @@
 <?php
-namespace BVW\Interfaces;
+namespace RMA\Interfaces;
 
-use BVW\Interfaces\FormElementInterface;
+use RMA\Interfaces\FormElementInterface;
 
 interface FieldContainerInterface
 {
