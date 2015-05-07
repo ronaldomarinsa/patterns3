@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Trilhando caminho com PHP
 
 ## Design Patterns
@@ -15,7 +14,7 @@ Agora que você criou um formulário que é montado dinâmicamente, vamos adicio
 
 - Crie 4 instancias deste form com os campos que você quiser e renderize. Implementaremos as classes “Validator” e “Request” em exemplos posteriores.
 
-Restrições & dicas
+Restrições e dicas:
 
 - Toda a implementação deve ser feita usando OO (sem uso de funções)
 - Não é permitido usar métodos e atributos estáticos
@@ -25,6 +24,14 @@ Restrições & dicas
 - Procure fazer métodos pequenos. Métodos com +100 linhas não serão permitidos
 - Use muitas interfaces para confiar na comuniçação/contrato dos seus objetos.
 - Separe as classes em namespaces.
+
+### Projeto Fase 3
+
+Fieldsets
+
+Agora que seu form possui elementos que são renderizados separadamente, vamos fazer o mesmo para um elemento em especial: o fieldset.
+
+Você deve ser capaz de criar um formulário onde chamando o método "createField()" da fase anterior, seja possível você criar fieldsets e popular esses fieldsets com campos, usando mesmo método. 
 
 -----------
 
@@ -37,6 +44,3 @@ Depois de clonado, instale usando o composer
 Execute o servidor embutido do php apontando para a pasta *public/*
 
 > php -S [servidor]:[porta] -t public/
-=======
-# patterns2
->>>>>>> f1a6fe5660014545a6d22b932b445f963274f944
